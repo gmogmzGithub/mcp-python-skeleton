@@ -2,7 +2,6 @@
 
 import logging
 
-from mcpskeleton.daemon.auth import APIKeyMiddleware
 from mcpskeleton.daemon.fastapi_webapp import SimpleWebapp
 from mcpskeleton.daemon.routes import non_api_router
 from mcpskeleton.daemon.health_checks import create_health_router
@@ -23,10 +22,6 @@ def build_app():
     webapp.app.include_router(non_api_router)
     webapp.app.include_router(create_health_router())
 
-    # Add simple API key middleware for MCP routes (optional)
-    # You can customize or remove this based on your security needs
-    api_key = "your-api-key-here"  # Replace with your API key or remove entirely
-    webapp.app.add_middleware(APIKeyMiddleware, api_key=api_key)
 
     # Add MCP server capabilities
     add_mcp_server_capabilities(webapp.app)

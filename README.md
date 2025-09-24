@@ -12,7 +12,6 @@ The Model Context Protocol (MCP) is an open standard that enables AI application
 - **MCP Integration**: Built-in support for MCP protocol using FastMCP
 - **Simple Architecture**: Clean, extensible codebase that's easy to understand and modify
 - **Health Checks**: Built-in health check endpoints for monitoring
-- **API Key Authentication**: Optional API key middleware for securing MCP endpoints
 - **Docker Support**: Ready-to-deploy Docker configuration
 - **Testing Setup**: Pre-configured testing with pytest and tox
 - **Code Quality**: Pre-commit hooks for formatting and linting
@@ -108,21 +107,6 @@ base_tools = [
 - `HOST0`: Server host (default: 0.0.0.0)
 - `WORKERS`: Number of worker processes (default: 1)
 
-### API Key Authentication
-
-The server includes optional API key authentication for MCP endpoints. To configure:
-
-1. Set your API key in `mcpskeleton/daemon/implementation.py`:
-   ```python
-   api_key = "your-secure-api-key-here"
-   ```
-
-2. Clients should include the API key in requests:
-   ```
-   X-API-Key: your-secure-api-key-here
-   ```
-
-To disable API key authentication, remove or comment out the middleware registration in `build_app()`.
 
 ## Development
 
@@ -161,7 +145,6 @@ poetry run flake8
 mcpskeleton/
 ├── __main__.py              # Application entry point
 ├── daemon/                  # Web server components
-│   ├── auth.py             # API key middleware
 │   ├── fastapi_webapp.py   # FastAPI application setup
 │   ├── implementation.py   # Main app factory
 │   ├── routes.py           # Basic routes
