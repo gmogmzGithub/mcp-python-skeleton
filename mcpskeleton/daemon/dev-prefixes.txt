@@ -1,0 +1,7 @@
+# Development privileged IP prefixes
+# These IPs are allowed to access /private endpoints during local development
+127.0.
+::1/128
+10.0.
+192.168.
+172.16.
